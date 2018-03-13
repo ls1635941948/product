@@ -32,4 +32,8 @@ public class ProductServiceImpl implements ProductService {
     public Product queryProductById(int id) {
         return productMapper.queryProductById(id);
     }
+
+    public Integer addProduct(Product product) {
+        return productMapper.addProduct(product);
+    }
 }

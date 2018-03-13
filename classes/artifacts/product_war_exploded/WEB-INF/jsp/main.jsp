@@ -9,8 +9,14 @@
 <html>
 <head>
     <title>Title</title>
+    <%@include file="basic.jsp"%>
 </head>
 <body>
-欢迎您：${loginUser.userName},${loginUser.userroles},${loginUser.id}
+<div class="container">
+    <%@include file="top.jsp"%>
+    <div class="row">
+        <%@include file="left.jsp"%>
+    </div>
+</div>
 </body>
 </html>

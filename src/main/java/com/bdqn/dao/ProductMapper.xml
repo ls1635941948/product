@@ -18,6 +18,9 @@
     <select id="queryProductById" parameterType="int" resultType="com.bdqn.entity.Product">
     select * from product where id=#{id}
     </select>
+    <insert id="addProduct" parameterType="Product">
+        INSERT INTO product VALUE(NULL ,#{productName},#{quantity})
+    </insert>
 
 
 

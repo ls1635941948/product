@@ -13,7 +13,7 @@
             </a>
         </li>
         <li role="presentation">
-            <a href="#">
+            <a href="${pageContext.request.contextPath}/sale/toSale?pageNum=1&pageSize=5">
                 销售记录
             </a>
         </li>

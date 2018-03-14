@@ -14,34 +14,6 @@
     <%@include file="basic.jsp"%>
     <script type="text/javascript">
         $(function () {
-            //详情按钮单击事件
-            $("button[name=queryGradeButton]").click(function () {
-                var gradeId=$(this).attr("no");
-                var url="${pageContext.request.contextPath}/grade/queryGradeById";
-                $.get(url,{"gradeId":gradeId},function (data) {
-                    $("#gradeNameDiv").html(data.gradeName);
-                    //var date=new Date(data.createDate).toLocaleDateString();
-                    //$("#createDateDiv").html(date);
-                    var date=new Date(data.createDate);
-                    var y=date.getFullYear();
-                    var m=date.getMonth()+1;
-                    var d=date.getDate();
-                    $("#createDateDiv").html(y+"-"+m+"-"+d);
-                    $("#detailsDiv").html(data.details);
-                })
-                $("#queryGradeModal").modal("show");
-                //alert(gradeId)
-            })
-
-            //单条删除班级
-            $("button[name=deleteGradeButton]").click(function () {
-                var gradeId=$(this).attr("no");
-                $.get("${pageContext.request.contextPath}/grade/deleteGradeById",
-                    {"gradeId":gradeId},function (data) {
-                        alert(data.msg);
-                        location.href=location.href;
-                    });
-            })
 
             //展示修改用户模态框
             $("button[name=updateUserButton]").click(function () {
@@ -92,11 +64,7 @@
         <div class="col-md-10">
             <h2>用户管理</h2>
         </div>
-        <div class="row">
-            <div class="col-md-2 col-md-offset-8">
-                <button class="btn btn-info" id="addUserButton">添加用户</button>
-            </div>
-        </div>
+
         <div class="row">
             <div>
                 <h2></h2>
@@ -108,6 +76,7 @@
                     <td>ID</td>
                     <td>用户名称</td>
                     <td>用户角色</td>
+                    <td>用户状态</td>
                     <td>操作</td>
                 </tr>
 
@@ -116,9 +85,11 @@
                         <td>${user.id}</td>
                         <td>${user.userName}</td>
                         <td>${user.userroles}</td>
+                        <td><c:if test="${user.status=='1'}">正常</c:if>
+                            <c:if test="${user.status=='0'}">冻结</c:if>
+                        </td>
                         <td>
                             <button class="btn btn-warning" no="${user.id}" name="updateUserButton">修改</button>
-                            <button class="btn btn-danger" no="${user.id}" name="deleteUserButton">删除</button>
                         </td>
                     </tr>
                 </c:forEach>
@@ -176,8 +147,8 @@
                     <div class="form-group">
                         <label  class="col-sm-3 control-label">用户状态：</label>
                         <div class="col-sm-8">
-                            <input type="radio" name="updateStatus" value="0">冻结
-                            <input type="radio" name="updateStatus" value="1">正常
+                            <input type="radio" name="updateStatus" value="1" <c:if test="${user.status=='1'}" >checked="checked"</c:if>>正常
+                            <input type="radio" name="updateStatus" value="0" <c:if test="${user.status=='0'}" >checked="checked"</c:if>>冻结
                         </div>
                     </div>
                 </form>

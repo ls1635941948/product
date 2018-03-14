@@ -28,6 +28,7 @@ public class UsersController {
     @RequestMapping(value = "toUser", method = RequestMethod.GET,
             produces = "application/json;charset=UTF-8")
     public String login(Users users, HttpSession httpSession, Model model) {
+        System.out.println(users);
         Users loginUser = usersService.UsersLogin(users);
         if (null != loginUser) {
             httpSession.setAttribute("loginUser", loginUser);
@@ -78,5 +79,11 @@ public class UsersController {
     public String queryUserById(int id){
         Users users=usersService.queryUserById(id);
         return JSON.toJSONString(users);
+    }
+
+    @RequestMapping(value = "logout")
+    public String logout(HttpSession session) {
+        session.removeAttribute("loginUser");
+        return "index";
     }
 }

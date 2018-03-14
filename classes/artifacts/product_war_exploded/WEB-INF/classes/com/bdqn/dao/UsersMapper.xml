@@ -9,6 +9,7 @@
         <result property="userName" column="user_name"/>
         <result property="password" column="password"/>
         <result property="userroles" column="user_roles"/>
+        <result property="status" column="status"/>
     </resultMap>
 
     <select id="UsersLogin" resultMap="usersMap" parameterType="Users">
@@ -17,4 +18,30 @@
         and password=#{password}
     </select>
 
+    <insert id="addUser" parameterType="Users">
+        insert into users
+        VALUES (0,#{userName},#{password},"用户",1)
+    </insert>
+
+    <select id="queryAll" resultMap="usersMap">
+        SELECT * FROM users
+        ORDER BY id DESC
+    </select>
+
+    <update id="updateUser" parameterType="Users">
+        UPDATE users set
+        <choose>
+            <when test="password!=null and password!=''">
+                password=#{password}
+            </when>
+            <otherwise>
+                status=#{status}
+            </otherwise>
+        </choose>
+        where id = #{id}
+    </update>
+
+    <select id="queryUserById" parameterType="int" resultMap="usersMap">
+        SELECT * FROM users WHERE id=#{id}
+    </select>
 </mapper>

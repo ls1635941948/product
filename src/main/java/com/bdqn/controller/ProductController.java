@@ -17,7 +17,7 @@ import javax.annotation.Resource;
  */
 @org.springframework.stereotype.Controller
 @RequestMapping("product")
-public class Controller {
+public class ProductController {
     @Resource
     private ProductService productService;
 
@@ -46,5 +46,14 @@ public class Controller {
         Product product=productService.queryProductById(id);
         return JSON.toJSONString(product);
 
+    }
+    @ResponseBody
+    @RequestMapping(value = "addProduct",method = RequestMethod.POST,produces = {"application/json;charset=utf-8"})
+    public String addProduct(Product product){
+        int n=productService.addProduct(product);
+        if(n>0){
+         return    JSON.toJSONString(Message.success());
+        }
+        return JSON.toJSONString(Message.error());
     }
 }

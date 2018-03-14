@@ -12,5 +12,6 @@ public interface ProductService {
             (Integer pageNum,Integer pageSize);
     public Integer updateProduct(Product product);
     public Product queryProductById(int id);
+    public Integer addProduct(Product product);
 
 }

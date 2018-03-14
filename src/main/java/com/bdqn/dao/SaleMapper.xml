@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bdqn.dao.SaleMapper">
+    <resultMap id="salemap" type="Sale">
+        <id column="id" property="id"></id>
+        <result column="total_price" property="totalPrice"></result>
+        <result column="sale_date" property="saleDate"></result>
+        <result column="sale_code" property="saleCode"></result>
+        <association property="product" javaType="Product" resultMap="productmap"></association>
+        <association property="users" javaType="Users" resultMap="usersmap"></association>
+    </resultMap>
+    <resultMap id="productmap" type="Product">
+        <id column="p_id" property="id"></id>
+        <result property="productName" column="product_name"></result>
+    </resultMap>
+    <resultMap id="usersmap" type="Users">
+        <id property="id" column="u_id"/>
+        <result property="userName" column="user_name"/>
+        <result property="password" column="password"/>
+        <result property="userroles" column="user_roles"/>
+    </resultMap>
+
+        <select id="queryAllList" resultMap="salemap">
+             SELECT s.id,s.sale_code,p.product_name,s.price,s.quantity,s.total_price,s.sale_date
+            FROM sale s ,product p,users u WHERE s.user_id=u.`id` AND s.product_id=p.id
+        </select>
+    
+    <insert id="addSale" parameterType="Sale">
+         INSERT INTO sale VALUES(0,#{users.id},#{product.id},#{price},#{quantity},#{totalPrice},NOW(),#{saleCode})
+    </insert>
+
+    <select id="querySale" resultMap="salemap">
+          SELECT DISTINCT s.id,s.sale_code,p.product_name,s.price,s.quantity,s.total_price,s.sale_date
+ FROM sale s ,product p,users u WHERE s.user_id=u.`id` AND s.product_id=p.id
+ AND (s.price LIKE CONCAT('%',#{title},'%') OR p.product_name LIKE CONCAT('%',#{title},'%')
+ OR s.quantity LIKE CONCAT('%',#{title},'%') OR s.total_price LIKE CONCAT('%',#{title},'%')
+ OR s.sale_date LIKE CONCAT('%',#{title},'%') OR s.sale_code LIKE CONCAT('%',#{title},'%') )
+ ORDER BY s.id DESC
+    </select>
+    
+
+
+
+
+</mapper>

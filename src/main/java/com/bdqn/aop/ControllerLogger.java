@@ -15,7 +15,6 @@ public class ControllerLogger {
         logger.info("调用了："+jp.getTarget()+
                 "的"+jp.getSignature().getName()+"方法，入参："+
                 Arrays.toString(jp.getArgs()));
-        System.out.println(111);
     }
 
     public void after(JoinPoint jp,Object result){

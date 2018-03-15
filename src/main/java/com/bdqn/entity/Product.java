@@ -5,7 +5,18 @@ package com.bdqn.entity;
  */
 public class Product {
     private int id,quantity;
+    private Double price;
     private String productName;
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "id=" + id +
+                ", quantity=" + quantity +
+                ", price=" + price +
+                ", productName='" + productName + '\'' +
+                '}';
+    }
 
     public int getId() {
         return id;
@@ -23,20 +34,19 @@ public class Product {
         this.quantity = quantity;
     }
 
+    public Double getPrice() {
+        return price;
+    }
+
+    public void setPrice(Double price) {
+        this.price = price;
+    }
+
     public String getProductName() {
         return productName;
     }
 
     public void setProductName(String productName) {
         this.productName = productName;
-    }
-
-    @Override
-    public String toString() {
-        return "Product{" +
-                "id=" + id +
-                ", quantity=" + quantity +
-                ", productName='" + productName + '\'' +
-                '}';
     }
 }

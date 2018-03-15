@@ -19,23 +19,23 @@ public class SaleServiceImpl implements SaleService {
     private SaleMapper saleMapper;
 
 
-    @Override
+    @Resource
     public PageInfo<Sale> queryAllList(Integer pageNum, Integer pageSize) {
         PageHelper.startPage(pageNum,pageSize);
         List<Sale> list=saleMapper.queryAllList();
-        return new PageInfo<>(list);
+        return new PageInfo<Sale>(list);
     }
 
-    @Override
+    @Resource
     public int addSale(Sale sale) {
         return saleMapper.addSale(sale);
     }
 
-    @Override
+    @Resource
     public PageInfo<Sale> querySale(String title, Integer pageNum, Integer pageSize) {
         PageHelper.startPage(pageNum,pageSize);
         List<Sale> list=saleMapper.querySale(title);
-        return new PageInfo<>(list);
+        return new PageInfo<Sale>(list);
     }
 
 

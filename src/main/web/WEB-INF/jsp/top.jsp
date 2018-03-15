@@ -7,6 +7,6 @@
 <div class="row">
     <div class="col-md-4 col-md-offset-8">
         <h5>欢迎：${loginUser.userName}</h5>
-        <h5><a href="">退出</a></h5>
+        <h5><a href="${pageContext.request.contextPath}/user/logout">退出</a></h5>
     </div>
 </div>

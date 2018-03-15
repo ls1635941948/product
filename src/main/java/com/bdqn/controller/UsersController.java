@@ -28,10 +28,15 @@ public class UsersController {
     @RequestMapping(value = "toUser", method = RequestMethod.GET,
             produces = "application/json;charset=UTF-8")
     public String login(Users users, HttpSession httpSession, Model model) {
+        System.out.println(users);
         Users loginUser = usersService.UsersLogin(users);
-        if (null != loginUser) {
+        if (loginUser.getStatus()==1) {
             httpSession.setAttribute("loginUser", loginUser);
             return "main";
+        }
+        if (loginUser.getStatus() == 0) {
+            httpSession.setAttribute("message","此用户已冻结");
+            return "index";
         }
         model.addAttribute("message", "用户名密码错误");
         return "index";
@@ -78,5 +83,12 @@ public class UsersController {
     public String queryUserById(int id){
         Users users=usersService.queryUserById(id);
         return JSON.toJSONString(users);
+    }
+
+    @RequestMapping(value = "logout")
+    public String logout(HttpSession session) {
+        System.out.println(1);
+        session.removeAttribute("loginUser");
+        return "index";
     }
 }

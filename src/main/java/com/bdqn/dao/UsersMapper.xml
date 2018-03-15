@@ -20,7 +20,7 @@
 
     <insert id="addUser" parameterType="Users">
         insert into users
-        VALUES (0,#{userName},#{password},"用户",1)
+        VALUES (0,#{userName},#{password},#{userroles},1)
     </insert>
 
     <select id="queryAll" resultMap="usersMap">
@@ -30,14 +30,7 @@
 
     <update id="updateUser" parameterType="Users">
         UPDATE users set
-        <choose>
-            <when test="password!=null and password!=''">
-                password=#{password}
-            </when>
-            <otherwise>
-                status=#{status}
-            </otherwise>
-        </choose>
+        status=#{status}
         where id = #{id}
     </update>
 

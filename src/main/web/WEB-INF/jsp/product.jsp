@@ -156,7 +156,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label  class="col-sm-2 control-label">库存量</label>
+                                <label  class="col-sm-2 control-label">购买数量</label>
                                 <div class="col-sm-10">
                                     <input type="text" class="form-control"  placeholder="" name="quantity" id="updateQuantity">
                                 </div>

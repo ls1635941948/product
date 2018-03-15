@@ -25,7 +25,7 @@ public class SaleController {
             return "ListSale";
     }
 
-    @RequestMapping(value = "querySale", produces = {"application/json;charset=utf-8"})
+    @RequestMapping(value = "querySale")
     public String querySale(Integer pageNum, Integer pageSize, String title, Model model){
         PageInfo<Sale> pageInfo=saleService.querySale(title, pageNum, pageSize);
         model.addAttribute("pageInfo",pageInfo);

@@ -28,6 +28,7 @@ public class UsersController {
     @RequestMapping(value = "toUser", method = RequestMethod.GET,
             produces = "application/json;charset=UTF-8")
     public String login(Users users, HttpSession httpSession, Model model) {
+        System.out.println(users);
         Users loginUser = usersService.UsersLogin(users);
         if (loginUser.getStatus()==1) {
             httpSession.setAttribute("loginUser", loginUser);

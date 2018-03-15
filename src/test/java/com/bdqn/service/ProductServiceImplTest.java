@@ -16,11 +16,16 @@ import java.util.List;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"classpath:applicationContext.xml"})
 public class ProductServiceImplTest {
+    @Test
+    public void queryProductById() throws Exception {
+        System.out.println(productService.queryProductById(1));
+    }
+
     @Resource
     private ProductService productService;
     @Test
     public void queryAll() throws Exception {
-        PageInfo<Product> pageInfo=productService.queryAll(2,3);
+        PageInfo<Product> pageInfo=productService.queryAll(1,3);
         if(pageInfo!=null){
             List<Product> list=pageInfo.getList();
             for (Product product:list){
@@ -33,20 +38,19 @@ public class ProductServiceImplTest {
     @Test
     public void updateProduct() throws Exception {
         Product product=new Product();
-        product.setProductName("太阳");
-        product.setQuantity(800);
+        product.setId(7);
+        product.setQuantity(100);
+        System.out.println(productService.updateProduct(product));
     }
 
-    @Test
-    public void queryProductById() throws Exception {
-    }
 
     @Test
     public void addProduct() throws Exception {
         Product product=new Product();
-        product.setProductName("测试名字");
-        product.setQuantity(10);
-
+        product.setProductName("辣条");
+        product.setPrice(0.5);
+        product.setQuantity(400);
+        System.out.println(productService.addProduct(product));
     }
 
 

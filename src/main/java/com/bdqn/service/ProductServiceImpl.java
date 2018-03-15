@@ -11,7 +11,8 @@ import java.util.List;
 
 /**
  * Created by 朱博文 on 2018/3/13.
- */@Service
+ */
+@Service
 public class ProductServiceImpl implements ProductService {
     @Resource
     private ProductMapper productMapper;

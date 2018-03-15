@@ -8,8 +8,7 @@ import com.github.pagehelper.PageInfo;
  */
 
 public interface ProductService {
-    public PageInfo<Product> queryAll
-            (Integer pageNum,Integer pageSize);
+    public PageInfo<Product> queryAll(Integer pageNum,Integer pageSize);
     public Integer updateProduct(Product product);
     public Product queryProductById(int id);
     public Integer addProduct(Product product);

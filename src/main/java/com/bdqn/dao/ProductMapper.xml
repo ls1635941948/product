@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bdqn.dao.ProductMapper">
+    <resultMap id="ProductMap" type="Product">
+        <id column="id" property="id"></id>
+        <result property="productName" column="product_name"></result>
+    </resultMap>
+    <select id="queryAll" resultMap="ProductMap">
+        SELECT * FROM product order by id desc
+    </select>
+    <update id="updateProduct" parameterType="Product">
+        UPDATE product SET quantity=#{quantity}
+        WHERE
+        id=#{id}
+    </update>
+    <select id="queryProductById" parameterType="int" resultMap="ProductMap">
+    select * from product where id=#{id}
+    </select>
+    <insert id="addProduct" parameterType="Product">
+        INSERT INTO product value(NULL ,#{productName},#{price},#{quantity})
+    </insert>
+
+
+
+</mapper>

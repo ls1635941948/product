@@ -37,8 +37,9 @@ public class UsersServicesImplTest {
     @Test
     public void addUser() throws Exception {
         Users users = new Users();
-        users.setUserName("user4");
+        users.setUserName("user7");
         users.setPassword("1234");
+        users.setUserName("客户");
         int n=usersService.addUser(users);
         if (n>0) {
             System.out.println("success");
@@ -51,7 +52,7 @@ public class UsersServicesImplTest {
     public void updateUser() throws Exception {
         Users users = new Users();
         users.setId(5);
-        users.setPassword("9876");
+        users.setStatus(0);
         int n=usersService.updateUser(users);
         if (n>0) {
             System.out.println("success");

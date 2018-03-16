@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bdqn.dao.SaleNumMapper">
+    <resultMap id="salenummap" type="SaleNum">
+        <id column="id" property="id"></id>
+    </resultMap>
+    
+    <update id="updateSaleNum" parameterType="SaleNum">
+       UPDATE `salenum` SET saleSize=saleSize+1 WHERE id=#{id}
+    </update>
+    
+    <select id="querySaleNum" resultType="int">
+      select saleSize from saleNum where id=1
+    </select>
+    
+</mapper>

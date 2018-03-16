@@ -14,7 +14,6 @@
     <%@include file="basic.jsp"%>
     <script type="text/javascript">
         $(function () {
-
             //展示修改用户模态框
             $("button[name=updateUserButton]").click(function () {
                 var id=$(this).attr("no");
@@ -38,7 +37,6 @@
                     location.href=location.href;
                 })
             })
-
             //显示添加用户模态框
             $("#addUserButton").click(function () {
                 $("#addUserModal").modal("show");
@@ -149,7 +147,7 @@
                     <div class="form-group">
                         <label  class="col-sm-3 control-label">变更状态：</label>
                         <div class="radio col-sm-8">
-                            <label style="color: red">
+                            <label style="color: #ffa61f">
                                 <input type="radio" name="status" value="0">冻结
                             </label>
                             <label style="color:green">
@@ -170,4 +168,3 @@
 
 </body>
 </html>
-

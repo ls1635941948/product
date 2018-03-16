@@ -25,7 +25,7 @@ public class SaleController {
         model.addAttribute("pageInfo",pageInfo);
             return "ListSale";
     }
-
+//模糊查询
     @RequestMapping(value = "querySale",method= RequestMethod.GET)
     public String querySale(Integer pageNum, Integer pageSize, String title, Model model){
         PageInfo<Sale> pageInfo=saleService.querySale(title, pageNum, pageSize);

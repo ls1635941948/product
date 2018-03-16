@@ -23,20 +23,22 @@
     </resultMap>
 
         <select id="queryAllList" resultMap="salemap">
-             SELECT s.id,s.sale_code,p.product_name,s.price,s.quantity,s.total_price,s.sale_date
+           SELECT s.id,u.user_name,s.sale_code,p.product_name,p.price,s.quantity,s.total_price,s.sale_date
             FROM sale s ,product p,users u WHERE s.user_id=u.`id` AND s.product_id=p.id
+            ORDER BY s.id DESC
         </select>
     
     <insert id="addSale" parameterType="Sale">
-         INSERT INTO sale VALUES(0,#{users.id},#{product.id},#{price},#{quantity},#{totalPrice},NOW(),#{saleCode})
+         INSERT INTO sale VALUES(0,#{users.id},#{product.id},#{quantity},#{totalPrice},NOW(),#{saleCode})
     </insert>
 
-    <select id="querySale" resultMap="salemap">
-          SELECT DISTINCT s.id,s.sale_code,p.product_name,s.price,s.quantity,s.total_price,s.sale_date
+    <select id="querySale" resultMap="salemap" parameterType="String">
+          SELECT DISTINCT s.id,u.user_name,s.sale_code,p.product_name,p.price,s.quantity,s.total_price,s.sale_date
  FROM sale s ,product p,users u WHERE s.user_id=u.`id` AND s.product_id=p.id
- AND (s.price LIKE CONCAT('%',#{title},'%') OR p.product_name LIKE CONCAT('%',#{title},'%')
+ AND (p.price LIKE CONCAT('%',#{title},'%') OR p.product_name LIKE CONCAT('%',#{title},'%')
  OR s.quantity LIKE CONCAT('%',#{title},'%') OR s.total_price LIKE CONCAT('%',#{title},'%')
- OR s.sale_date LIKE CONCAT('%',#{title},'%') OR s.sale_code LIKE CONCAT('%',#{title},'%') )
+ OR s.sale_date LIKE binary CONCAT('%',#{title},'%') OR s.sale_code LIKE CONCAT('%',#{title},'%')
+ OR u.user_name LIKE CONCAT('%',#{title},'%'))
  ORDER BY s.id DESC
     </select>
     

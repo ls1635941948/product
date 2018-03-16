@@ -13,7 +13,7 @@
     <context:component-scan base-package="com.bdqn.service"></context:component-scan>
     <context:property-placeholder location="classpath:database.properties"/>
     <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
-        <property name="driverClassName" value="${jdbc.driver}"/>
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
         <property name="url" value="${jdbc.url}"/>
         <property name="username" value="${jdbc.userName}"/>
         <property name="password" value="${jdbc.password}"/>

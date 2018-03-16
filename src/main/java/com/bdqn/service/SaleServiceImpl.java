@@ -2,6 +2,8 @@ package com.bdqn.service;
 
 import com.bdqn.dao.SaleMapper;
 import com.bdqn.entity.Sale;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -16,18 +18,25 @@ public class SaleServiceImpl implements SaleService {
     @Resource
     private SaleMapper saleMapper;
 
-    @Override
-    public List<Sale> queryAllList() {
-        return saleMapper.queryAllList();
+
+
+    public PageInfo<Sale> queryAllList(Integer pageNum, Integer pageSize) {
+        PageHelper.startPage(pageNum,pageSize);
+        List<Sale> list=saleMapper.queryAllList();
+        return new PageInfo<Sale>(list);
     }
 
-    @Override
+
     public int addSale(Sale sale) {
         return saleMapper.addSale(sale);
     }
 
-    @Override
-    public List<Sale> querySale(String title) {
-        return saleMapper.querySale(title);
+
+    public PageInfo<Sale> querySale(String title, Integer pageNum, Integer pageSize) {
+        PageHelper.startPage(pageNum,pageSize);
+        List<Sale> list=saleMapper.querySale(title);
+        return new PageInfo<Sale>(list);
     }
+
+
 }

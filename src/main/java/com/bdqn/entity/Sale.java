@@ -6,23 +6,24 @@ import java.util.Date;
  * Created by Administrator on 2018/3/13.
  */
 public class Sale {
-    private int id,quantity,saleCode;
-    private double price,totalPrice;
+    private int id,quantity;
+    private double totalPrice;
     private Date saleDate;
     private Users users;
     private Product product;
+    private String saleCode;
+
 
     @Override
     public String toString() {
         return "Sale{" +
                 "id=" + id +
                 ", quantity=" + quantity +
-                ", saleCode=" + saleCode +
-                ", price=" + price +
                 ", totalPrice=" + totalPrice +
                 ", saleDate=" + saleDate +
                 ", users=" + users +
                 ", product=" + product +
+                ", saleCode='" + saleCode + '\'' +
                 '}';
     }
 
@@ -40,22 +41,6 @@ public class Sale {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
-    }
-
-    public int getSaleCode() {
-        return saleCode;
-    }
-
-    public void setSaleCode(int saleCode) {
-        this.saleCode = saleCode;
-    }
-
-    public double getPrice() {
-        return price;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
     }
 
     public double getTotalPrice() {
@@ -90,15 +75,22 @@ public class Sale {
         this.product = product;
     }
 
-    public Sale(int id, int quantity, int saleCode, double price, double totalPrice, Date saleDate, Users users, Product product) {
+    public String getSaleCode() {
+        return saleCode;
+    }
+
+    public void setSaleCode(String saleCode) {
+        this.saleCode = saleCode;
+    }
+
+    public Sale(int id, int quantity, double totalPrice, Date saleDate, Users users, Product product, String saleCode) {
         this.id = id;
         this.quantity = quantity;
-        this.saleCode = saleCode;
-        this.price = price;
         this.totalPrice = totalPrice;
         this.saleDate = saleDate;
         this.users = users;
         this.product = product;
+        this.saleCode = saleCode;
     }
 
     public Sale() {

@@ -8,18 +8,18 @@
         <result property="productName" column="product_name"></result>
     </resultMap>
     <select id="queryAll" resultMap="ProductMap">
-        SELECT * FROM product
+        SELECT * FROM product order by id desc
     </select>
     <update id="updateProduct" parameterType="Product">
         UPDATE product SET quantity=#{quantity}
         WHERE
         id=#{id}
     </update>
-    <select id="queryProductById" parameterType="int" resultType="com.bdqn.entity.Product">
+    <select id="queryProductById" parameterType="int" resultMap="ProductMap">
     select * from product where id=#{id}
     </select>
     <insert id="addProduct" parameterType="Product">
-        INSERT INTO product VALUE(NULL ,#{productName},#{quantity})
+        INSERT INTO product value(NULL ,#{productName},#{price},#{quantity})
     </insert>
 
 

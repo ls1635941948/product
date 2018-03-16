@@ -29,10 +29,8 @@
             <div class="col-md-2 col-md-offset-8">
                 <div class="col-lg-16">
                     <div class="input-group">
-                        <form action="${pageContext.request.contextPath}/sale/querySale" method="post">
+                        <form action="${pageContext.request.contextPath}/sale/querySale?pageNum=1&pageSize=3" method="post">
                         <input type="text" class="form-control" id="querySale" name="title" >
-                        <input type="hidden" name="pageNum" value="1">
-                        <input type="hidden" name="pageSize" value="5">
                             <span class="input-group-btn">
                          <button class="btn btn-default" type="submit" >搜索</button>
                             </span>
@@ -40,8 +38,6 @@
                     </div><!-- /input-group -->
                 </div><!-- /.col-lg-6 -->
             </div><!-- /.row -->
-
-
             </div>
         </div>
         <div class="row">
@@ -68,7 +64,7 @@
                         <td>${sale.saleCode}</td>
                         <td>${sale.users.userName}</td>
                         <td>${sale.product.productName}</td>
-                        <td>${sale.price}</td>
+                        <td>${sale.product.price}</td>
                         <td>${sale.quantity}</td>
                         <td>${sale.totalPrice}</td>
                         <td>

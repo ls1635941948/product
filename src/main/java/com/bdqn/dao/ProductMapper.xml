@@ -11,7 +11,7 @@
         SELECT * FROM product order by id desc
     </select>
     <update id="updateProduct" parameterType="Product">
-        UPDATE product SET quantity=quantity-#{quantity}
+        UPDATE product SET quantity=#{quantity}
         WHERE
         id=#{id}
     </update>

@@ -27,6 +27,10 @@ public class ProductServiceImpl implements ProductService {
     }
 
     public Integer updateProduct(Product product) {
+
+
+
+
         return productMapper.updateProduct(product);
     }
 

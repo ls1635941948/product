@@ -17,17 +17,17 @@ public class UsersServiceImpl implements UsersService{
     @Resource
     private UsersMapper usersMapper;
 
-    @Resource
+
     public Users UsersLogin(Users users) {
         return usersMapper.UsersLogin(users);
     }
 
-    @Resource
+
     public int addUser(Users users) {
         return usersMapper.addUser(users);
     }
 
-    @Resource
+
     public PageInfo<Users> queryAll(Integer pageNum,Integer pageSize) {
         PageHelper.startPage(pageNum, pageSize);
         List<Users> list=usersMapper.queryAll();
@@ -35,12 +35,12 @@ public class UsersServiceImpl implements UsersService{
         return pageInfo;
     }
 
-    @Resource
+
     public int updateUser(Users users) {
         return usersMapper.updateUser(users);
     }
 
-    @Resource
+
     public Users queryUserById(int id) {
         return usersMapper.queryUserById(id);
     }

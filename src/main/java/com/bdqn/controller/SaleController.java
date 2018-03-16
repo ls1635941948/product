@@ -6,6 +6,7 @@ import com.github.pagehelper.PageInfo;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.annotation.Resource;
 
@@ -25,7 +26,7 @@ public class SaleController {
             return "ListSale";
     }
 
-    @RequestMapping(value = "querySale")
+    @RequestMapping(value = "querySale",method= RequestMethod.GET)
     public String querySale(Integer pageNum, Integer pageSize, String title, Model model){
         PageInfo<Sale> pageInfo=saleService.querySale(title, pageNum, pageSize);
         model.addAttribute("pageInfo",pageInfo);

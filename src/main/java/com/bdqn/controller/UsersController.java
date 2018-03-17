@@ -28,7 +28,7 @@ public class UsersController {
     @RequestMapping(value = "toUser", method = RequestMethod.GET,
             produces = "application/json;charset=UTF-8")
     public String login(Users users, HttpSession httpSession, Model model) {
-
+        System.out.println(111);
         if(users.getUserName().equals("")||users.getPassword().equals("")){
             model.addAttribute("message","用户名或者密码不存在");
             return "index";

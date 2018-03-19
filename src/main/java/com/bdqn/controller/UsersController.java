@@ -28,22 +28,25 @@ public class UsersController {
     @RequestMapping(value = "toUser", method = RequestMethod.GET,
             produces = "application/json;charset=UTF-8")
     public String login(Users users, HttpSession httpSession, Model model) {
-        System.out.println(users);
-        Users loginUser = usersService.UsersLogin(users);
-        if(loginUser!=null){
+        System.out.println(111);
+        if(users.getUserName().equals("")||users.getPassword().equals("")){
+            model.addAttribute("message","用户名或者密码不存在");
+            return "index";
+        }else{
+
+            Users loginUser = usersService.UsersLogin(users);
             if (loginUser.getStatus()==1) {
                 httpSession.setAttribute("loginUser", loginUser);
                 return "main";
             }
             if (loginUser.getStatus() == 0) {
-               model.addAttribute("message","此用户已冻结");
+                model.addAttribute("message","此用户已冻结");
                 return "index";
             }
-            model.addAttribute("message", "用户名密码错误");
-            return "index";
         }
-        model.addAttribute("用户名或密码不存在");
+        model.addAttribute("message", "用户名密码错误");
         return "index";
+
     }
 
     //添加

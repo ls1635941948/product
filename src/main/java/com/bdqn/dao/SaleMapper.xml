@@ -33,7 +33,7 @@
     </insert>
 
     <select id="querySale" resultMap="salemap" parameterType="String">
-          SELECT DISTINCT s.id,u.user_name,s.sale_code,p.product_name,p.price,s.quantity,s.total_price,s.sale_date
+  SELECT DISTINCT s.id,u.user_name,s.sale_code,p.product_name,p.price,s.quantity,s.total_price,s.sale_date
  FROM sale s ,product p,users u WHERE s.user_id=u.`id` AND s.product_id=p.id
  AND (p.price LIKE CONCAT('%',#{title},'%') OR p.product_name LIKE CONCAT('%',#{title},'%')
  OR s.quantity LIKE CONCAT('%',#{title},'%') OR s.total_price LIKE CONCAT('%',#{title},'%')
